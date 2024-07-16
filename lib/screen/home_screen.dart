@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             arguments: menu.groupQuestionId,
                           );
                           homeProvider.setRestoreData(res);
-                        } else if (menu.groupQuestionId == 132) {
+                        } else if (menu.groupQuestionId == 133) {
                           final res = await NavigationService.pushNamed(
                             ResolutionScreen.routeName,
                             arguments: menu.groupQuestionId,
@@ -58,33 +58,14 @@ class _HomeScreenState extends State<HomeScreen> {
                       trailing: (menu.groupQuestionId == 132 &&
                               homeProvider.restoreData.address != null)
                           ? const Icon(Icons.check, color: Colors.green)
-                          : (menu.groupQuestionId == 132 &&
+                          : (menu.groupQuestionId == 133 &&
                                   homeProvider.resolutionData.address != null)
                               ? const Icon(Icons.check, color: Colors.green)
                               : const SizedBox(),
                     );
                   },
                 )
-              : Center(
-                  child: InkWell(
-                    onTap: () async {
-                      final res = await NavigationService.pushNamed(
-                        ResolutionScreen.routeName,
-                        arguments: 132,
-                      );
-                      homeProvider.setResolutionData(res);
-                    },
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        const Text('Data Kosong'),
-                        (homeProvider.resolutionData.address != null)
-                            ? const Icon(Icons.check, color: Colors.green)
-                            : const SizedBox()
-                      ],
-                    ),
-                  ),
-                ),
+              : const Center(child: Text('Data Kosong')),
         );
       },
     );

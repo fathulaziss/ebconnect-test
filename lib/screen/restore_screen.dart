@@ -86,23 +86,6 @@ class _RestoreScreenState extends State<RestoreScreen> {
                     }
                     return const SizedBox();
                   }),
-                  // Checkin(
-                  //   onPressed: () {
-                  //     restoreProvider.checkIn(context);
-                  //   },
-                  // ),
-                  // RestoreDescription(
-                  //   descriptionController: descriptionController,
-                  //   onChanged: (value) {
-                  //     restoreProvider.setDescription(value);
-                  //   },
-                  // ),
-                  // RestoreTakePhoto(
-                  //   onPressed: () {
-                  //     restoreProvider.takePhoto(context);
-                  //   },
-                  //   photos: restoreProvider.photos,
-                  // ),
                 ],
               ),
             ),

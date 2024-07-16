@@ -70,47 +70,60 @@ class _ResolutionScreenState extends State<ResolutionScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 12),
               child: Column(
                 children: [
-                  Checkin(
-                    onPressed: () {
-                      resolutionProvider.checkIn(context);
-                    },
-                  ),
-                  ResolutionSiteVisit(
-                    listSiteVisitPurpose:
-                        resolutionProvider.listSiteVisitPurpose,
-                    selectSiteVisitPurpose:
-                        resolutionProvider.selectSiteVisitPurpose,
-                    onChanged: resolutionProvider.setSelectedSiteVisitPurpose,
-                  ),
-                  ResolutionName(
-                    nameController: nameController,
-                    onChanged: (value) {
-                      resolutionProvider.setName(value);
-                    },
-                  ),
-                  ResolutionPhoneNumber(
-                    phoneNumberController: phoneNumberController,
-                    onChanged: (value) {
-                      resolutionProvider.setPhoneNumber(value);
-                    },
-                  ),
-                  ResolutionRole(
-                    roles: resolutionProvider.roles,
-                    selectRole: resolutionProvider.selectRole,
-                    onChanged: resolutionProvider.setSelectedRole,
-                  ),
-                  ResolutionActivityLog(
-                    logController: logController,
-                    onChanged: (value) {
-                      resolutionProvider.setLogActivity(value);
-                    },
-                  ),
-                  ResolutionSiteAccessible(
-                    listSiteAccessible: resolutionProvider.listSiteAccessible,
-                    selectSiteAccessible:
-                        resolutionProvider.selectSiteAccessible,
-                    onChanged: resolutionProvider.setSelectedSiteAccessible,
-                  ),
+                  ...resolutionProvider.listFormModel.map((e) {
+                    if (e.groupQuestionId == 10) {
+                      return Checkin(
+                        onPressed: () {
+                          resolutionProvider.checkIn(context);
+                        },
+                      );
+                    } else if (e.groupQuestionId == 11) {
+                      return ResolutionSiteVisit(
+                        listSiteVisitPurpose:
+                            resolutionProvider.listSiteVisitPurpose,
+                        selectSiteVisitPurpose:
+                            resolutionProvider.selectSiteVisitPurpose,
+                        onChanged:
+                            resolutionProvider.setSelectedSiteVisitPurpose,
+                      );
+                    } else if (e.groupQuestionId == 12) {
+                      return ResolutionName(
+                        nameController: nameController,
+                        onChanged: (value) {
+                          resolutionProvider.setName(value);
+                        },
+                      );
+                    } else if (e.groupQuestionId == 13) {
+                      return ResolutionPhoneNumber(
+                        phoneNumberController: phoneNumberController,
+                        onChanged: (value) {
+                          resolutionProvider.setPhoneNumber(value);
+                        },
+                      );
+                    } else if (e.groupQuestionId == 14) {
+                      return ResolutionRole(
+                        roles: resolutionProvider.roles,
+                        selectRole: resolutionProvider.selectRole,
+                        onChanged: resolutionProvider.setSelectedRole,
+                      );
+                    } else if (e.groupQuestionId == 15) {
+                      return ResolutionActivityLog(
+                        logController: logController,
+                        onChanged: (value) {
+                          resolutionProvider.setLogActivity(value);
+                        },
+                      );
+                    } else if (e.groupQuestionId == 16) {
+                      return ResolutionSiteAccessible(
+                        listSiteAccessible:
+                            resolutionProvider.listSiteAccessible,
+                        selectSiteAccessible:
+                            resolutionProvider.selectSiteAccessible,
+                        onChanged: resolutionProvider.setSelectedSiteAccessible,
+                      );
+                    }
+                    return const SizedBox();
+                  }),
                 ],
               ),
             ),

@@ -35,7 +35,7 @@ class ResolutionProvider extends ChangeNotifier {
 
   String get time => _time;
 
-  List<String> _listSiteVisitPurpose = ['Investigasi', 'Koordinasi', 'Escort'];
+  List<String> _listSiteVisitPurpose = [];
 
   List<String> get listSiteVisitPurpose => _listSiteVisitPurpose;
 
@@ -51,7 +51,7 @@ class ResolutionProvider extends ChangeNotifier {
 
   String get phoneNumber => _phoneNumber;
 
-  List<String> _roles = ['Investigasi', 'Koordinasi', 'Escort'];
+  List<String> _roles = [];
 
   List<String> get roles => _roles;
 
@@ -63,7 +63,7 @@ class ResolutionProvider extends ChangeNotifier {
 
   String get activityLog => _activityLog;
 
-  List<String> _listSiteAccessible = ['Yes', 'No'];
+  List<String> _listSiteAccessible = [];
 
   List<String> get listSiteAccessible => _listSiteAccessible;
 
@@ -79,6 +79,15 @@ class ResolutionProvider extends ChangeNotifier {
       groupQuestionId: groupQuestionId,
       onSuccess: (List<ResolutionFormModel> data) {
         _listFormModel = data;
+        final item1 = _listFormModel
+            .firstWhere((element) => element.groupQuestionId == 11);
+        final item2 = _listFormModel
+            .firstWhere((element) => element.groupQuestionId == 14);
+        final item3 = _listFormModel
+            .firstWhere((element) => element.groupQuestionId == 16);
+        _listSiteVisitPurpose = item1.list ?? [];
+        _roles = item2.list ?? [];
+        _listSiteAccessible = item3.list ?? [];
         notifyListeners();
       },
       onError: (String errorMessage) {
